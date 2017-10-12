@@ -1,0 +1,15 @@
+if [ ! -f '/.dockerenv' ] && [ ! -e "$SSH_TTY" ]; then
+    export PS1_C1=33
+    export PS1_C2=93
+else
+    export PS1_C1=31
+    export PS1_C2=91
+fi
+
+export EDITOR=nano
+export PS1="\[\e[`echo $PS1_C1`m\]#\# !\! \D{%Y-%m-%d} \t \h \[\e[`echo $PS1_C2`;1m\]\w\[\e[0;`echo $PS1_C2`m\]\$(parse_git_branch)\[\e[0;`echo $PS1_C1`m\] \$\[\e[0m\] "
+export CLICOLOR=1
+export LSCOLORS=ExFxBxDxCxegedabagacad
+
+export HISTCONTROL=ignoredups:erasedups
+shopt -s histappend

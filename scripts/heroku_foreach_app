@@ -1,0 +1,23 @@
+#!/bin/sh
+
+#
+# Runs given command for each Heroku app in given organization.
+# The app name is available in $app variable.
+# 
+#    heroku_foreach_app acme-org "echo \$app" # => prints app name
+#
+
+if [[ $# -lt 2 ]]; then
+    echo "Usage: $0 ORGANIZATION COMMAND"
+    echo "       App name is available as \$app var."
+    echo "Example: $0 acme-org \"echo \$app\""
+    exit 1
+fi
+
+ORG=$1
+APP_COMMAND=$2
+
+heroku apps --org $ORG \
+    | sed '1d' \
+    | cut -d' ' -f1 \
+    | while read app; do eval $APP_COMMAND; done

@@ -1,0 +1,1 @@
+alias dockredis="docker rm redis; docker run --rm --name redis -v /Users/guziklukasz/.dockerdata/data/redis:/data -p 6379:6379 redis redis-server --appendonly yes"

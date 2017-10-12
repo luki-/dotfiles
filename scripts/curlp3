@@ -1,0 +1,15 @@
+#!/bin/bash
+
+NEWSROOM=plan3
+
+while getopts n: opt; do
+  case $opt in
+    n)
+      NEWSROOM=$OPTARG
+      ;;
+  esac
+done
+
+JWT=`plan3jwt --env dev --newsroom $NEWSROOM`
+
+curl -H 'Content-Type: application/json' -H "Authorization: Plan3JWT $JWT" $* | jq

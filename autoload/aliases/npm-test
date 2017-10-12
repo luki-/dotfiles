@@ -1,0 +1,1 @@
+alias npm-test="npm run lint && npm run nsp && npm run test"

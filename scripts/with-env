@@ -1,0 +1,10 @@
+#!/bin/sh
+#
+# Runs given cmd with env vars loaded from .env file.
+# Usage:
+#
+#    $ with-env java -jar target/foo.jar server 
+#
+
+dotenv=".env"
+env $(cat "$dotenv" | grep -v "^#" | xargs) $* 

@@ -1,0 +1,37 @@
+#!/usr/bin/env ruby
+
+#
+# Generate valid Plan3JWT. Token expires in 24 hrs.
+# Args:
+#   --env       prod | dev      - which Bouncer instance to use (for RSA private key
+#   --newsroom  default: plan3  - value for 'newsroom' field
+#   --user      default: me :)  - value for 'sub' field (email)
+#
+
+require 'jwt'
+require 'optparse'
+
+args = {}
+OptionParser.new do |op|
+  op.on('--env ENV') { |o| args[:env] = o }
+  op.on('--newsroom NEWSROOM') { |o| args[:newsroom] = o }
+  op.on('--user USER') { |o| args[:user] = o }
+end.parse!
+
+bouncer_app = args[:env] == 'prod' ? 'plan3-authentication' : 'plan3-authentication-dev'
+JWT_RSA_PRIVATE_KEY = `heroku config:get JWT_RSA_PRIVATE_KEY -a #{bouncer_app}`.chomp
+
+rsa_private_key = OpenSSL::PKey::RSA.new <<-RSA
+-----BEGIN RSA PRIVATE KEY-----
+#{JWT_RSA_PRIVATE_KEY}
+-----END RSA PRIVATE KEY-----
+RSA
+
+payload = {
+  :sub => args[:user] || 'lukasz.guzik@schibsted.pl',
+  :exp => (Time.now + 60*60*24).to_i * 1000, # Valid for 24 hrs
+  :newsroom => args[:newsroom] || 'plan3',
+  :role => 'internal'
+}
+
+print JWT.encode(payload, rsa_private_key, 'RS256')

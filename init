@@ -1,0 +1,3 @@
+#!/bin/bash
+for f in $(find ~/.dotfiles/autoload -maxdepth 2 -not -path '*.git*' -not -type d); do source $f; done
+

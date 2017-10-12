@@ -1,5 +1,4 @@
-which brew &> /dev/null
-if [ $? -eq 0 ]; then
+if [ type brew &> /dev/null ]; then
     if [ -f $(brew --prefix)/etc/bash_completion ]; then
       . $(brew --prefix)/etc/bash_completion
     fi

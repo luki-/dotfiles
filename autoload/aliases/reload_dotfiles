@@ -1,0 +1,1 @@
+alias reload_dotfiles='source ~/.bash_profile'

@@ -1,0 +1,9 @@
+#!/bin/bash
+
+LOCAL_IP_ALIAS=10.0.0.3
+CONTAINER_ID=$(docker ps -f ancestor=jupiter/kafka -q)
+if [ -z $CONTAINER_ID ]; then
+    docker run --rm -it -h jupiter-kafka -v ~/projects/jupiter:/usr/src/app -v ~/.bash_profile:/root/.bash_profile -v ~/projects/jupiter/.jupiter_bash_rc:/root/.bashrc -v ~/.dotfiles:/root/.dotfiles -p $LOCAL_IP_ALIAS:9092:9092 "$@" jupiter/kafka
+else
+    docker exec -it $CONTAINER_ID /bin/bash
+fi

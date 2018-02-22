@@ -1,1 +1,0 @@
-alias dockpostgres="docker rm postgres; docker run --rm --name postgres -v /Users/guziklukasz/.dockerdata/data/postgres:/var/lib/postgresql/data -p 5432:5432 postgres"

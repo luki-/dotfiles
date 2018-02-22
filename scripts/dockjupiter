@@ -1,0 +1,11 @@
+#!/bin/bash
+
+PWD=$(pwd)
+
+LOCAL_IP_ALIAS=10.0.0.1
+CONTAINER_ID=$(docker ps -f ancestor=jupiter/node-web-app -q)
+if [ -z $CONTAINER_ID ]; then
+    docker run --rm -it -h jupiter-node-001 -v ~/projects/jupiter:/usr/src/app -v ~/projects/jupiter/.ssh_keys:/root/keys -v ~/.bash_profile:/root/.bash_profile -v ~/projects/jupiter/.jupiter_bash_rc:/root/.bashrc -v ~/.dotfiles:/root/.dotfiles -p $LOCAL_IP_ALIAS:3000-3004:3000-3004 -p $LOCAL_IP_ALIAS:443:443 -p $LOCAL_IP_ALIAS:3306:3306 --mount source=jupiter-node-web-mysql-data,target=/var/lib/mysql "$@" jupiter/node-web-app
+else
+    docker exec -it $CONTAINER_ID /bin/bash
+fi

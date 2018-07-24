@@ -1,1 +1,0 @@
-alias dockelastic="docker rm elastic; docker run --rm --name elastic -v /Users/guziklukasz/.dockerdata/data/elastic:/usr/share/elasticsearch/data -p 9200:9200 elasticsearch"

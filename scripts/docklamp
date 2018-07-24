@@ -1,0 +1,10 @@
+#!/bin/bash
+
+LOCAL_IP=$(ipconfig getifaddr en0)
+LOCAL_IP_ALIAS='10.0.0.2'
+CONTAINER_ID=$(docker ps -f ancestor=192.168.2.50:5000/jupiter/lamp-web-app -q)
+if [ -z $CONTAINER_ID ]; then
+    docker run --rm -it -h jupiter-lamp -v ~/projects/jupiter/lamp-services:/var/www/webapps -v ~/.bash_profile:/root/.bash_profile -v ~/projects/jupiter/.jupiter_bash_rc:/root/.bashrc -v ~/.dotfiles:/root/.dotfiles -p $LOCAL_IP_ALIAS:80:80 -p $LOCAL_IP_ALIAS:443:443 -p $LOCAL_IP_ALIAS:3306:3306 -e XDEBUG_CONFIG="remote_host=$LOCAL_IP" "$@" 192.168.2.50:5000/jupiter/lamp-web-app
+else
+    docker exec -it $CONTAINER_ID /bin/bash
+fi

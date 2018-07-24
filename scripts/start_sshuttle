@@ -1,0 +1,1 @@
+sshuttle --dns -r $SSHUTTLE_HOST 0/32

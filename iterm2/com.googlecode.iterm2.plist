@@ -211,10 +211,12 @@
 	</dict>
 	<key>NSWindow Frame SUUpdateAlert</key>
 	<string>650 599 620 392 0 0 1920 1178 </string>
+	<key>NSWindow Frame SessionsPreferences</key>
+	<string>269 126 606 469 0 0 1920 1178 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>292 676 796 473 0 0 1920 1178 </string>
+	<string>96 463 796 473 0 0 1920 1178 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 223 1920 955 0 0 1920 1178 </string>
+	<string>0 41 1920 1137 0 0 1920 1178 </string>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -819,6 +821,8 @@
 	<false/>
 	<key>OpenNoWindowsAtStartup</key>
 	<false/>
+	<key>PMPrintingExpandedStateForPrint2</key>
+	<false/>
 	<key>PasteTabToStringTabStopSize</key>
 	<integer>1</integer>
 	<key>PinchToChangeFontSizeDisabled</key>
@@ -858,6 +862,8 @@
 	</dict>
 	<key>PrefsCustomFolder</key>
 	<string>/Users/lukaszguzik/.dotfiles/iterm2</string>
+	<key>Print In Black And White</key>
+	<true/>
 	<key>QuitWhenAllWindowsClosed</key>
 	<true/>
 	<key>SUEnableAutomaticChecks</key>
@@ -869,7 +875,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2018-03-01T22:21:59Z</date>
+	<date>2018-04-30T00:25:53Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>ShowFullScreenTabBar</key>

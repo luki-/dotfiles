@@ -7,7 +7,7 @@ else
 fi
 
 export EDITOR=nano
-export PS1="\[\e[`echo $PS1_C1`m\]#\# !\! \D{%Y-%m-%d} \t \h \[\e[`echo $PS1_C2`;1m\]\w\[\e[0;`echo $PS1_C2`m\]\$(parse_git_branch)\[\e[0;`echo $PS1_C1`m\] \$\[\e[0m\] "
+export PS1="\[\e[`echo $PS1_C1`m\]#\# !\! \D{%Y-%m-%d} \t \[\e[`echo $PS1_C2`;1m\]\w\[\e[0;`echo $PS1_C2`m\]\$(parse_git_branch)\[\e[0;`echo $PS1_C1`m\] \\$\[\e[0m\] "
 export CLICOLOR=1
 export LSCOLORS=ExFxBxDxCxegedabagacad
 
